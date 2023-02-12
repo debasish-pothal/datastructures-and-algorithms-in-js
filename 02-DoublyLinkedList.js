@@ -94,6 +94,13 @@ class DoublyLinkedList {
     this.head.prev = null;
 
     this.length -= 1;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return firstNode;
   }
 
   get(index) {
