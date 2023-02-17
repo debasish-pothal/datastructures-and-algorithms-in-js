@@ -96,6 +96,86 @@ class BinarySearchTree {
 
     return null;
   }
+
+  breadthFirstSearch() {
+    const result = [];
+    const queue = [this.root];
+
+    while (queue.length) {
+      const node = queue.shift();
+      result.push(node.value);
+
+      if (node.left) {
+        queue.push(node.left);
+      }
+
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+
+    return result;
+  }
+
+  preorderSearch() {
+    const result = [];
+
+    const traverse = (node) => {
+      result.push(node.value);
+
+      if (node.left) {
+        traverse(node.left);
+      }
+
+      if (node.right) {
+        traverse(node.right);
+      }
+    };
+
+    traverse(this.root);
+
+    return result;
+  }
+
+  inorderSearch() {
+    const result = [];
+
+    const traverse = (node) => {
+      if (node.left) {
+        traverse(node.left);
+      }
+
+      result.push(node.value);
+
+      if (node.right) {
+        traverse(node.right);
+      }
+    };
+
+    traverse(this.root);
+
+    return result;
+  }
+
+  postorderSearch() {
+    const result = [];
+
+    const traverse = (node) => {
+      if (node.left) {
+        traverse(node.left);
+      }
+
+      if (node.right) {
+        traverse(node.right);
+      }
+
+      result.push(node.value);
+    };
+
+    traverse(this.root);
+
+    return result;
+  }
 }
 
 const bst = new BinarySearchTree();
@@ -106,4 +186,4 @@ bst.insert(18);
 bst.insert(27);
 bst.insert(52);
 bst.insert(82);
-console.log(bst.getMax());
+console.log(bst.postorderSearch());
