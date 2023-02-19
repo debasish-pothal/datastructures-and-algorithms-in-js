@@ -17,9 +17,13 @@ class Graph {
       for (const v of this.adjacencyList[vertex]) {
         this.removeEdge(vertex, v);
       }
+
+      delete this.adjacencyList[vertex];
+
+      return true;
     }
 
-    delete this.adjacencyList[vertex];
+    return false;
   }
 
   addEdge(vertex1, vertex2) {
